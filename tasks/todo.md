@@ -16,8 +16,8 @@ Convention: `[ ] Spec NNN — description`. Detail lives in the spec.
 - [x] Spec 001 — idempotency by topic/partition/offset
 - [x] Spec 001 — handle missing headers and invalid payloads
 - [x] Spec 001 — write tests (unit + integration)
-- [ ] Spec 001 — review acceptance criteria
-- [ ] Spec 001 — run lint and `build integrationTest`
+- [x] Spec 001 — review acceptance criteria
+- [x] Spec 001 — run lint and `build integrationTest`
 
 ## Spec 002 — Baseline classification and evals
 - [ ] Spec 002 — taxonomy and expected actions in the domain

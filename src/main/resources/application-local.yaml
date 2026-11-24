@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dlqtriage
+    username: dlqtriage
+    password: dlqtriage
+  kafka:
+    bootstrap-servers: localhost:9092
