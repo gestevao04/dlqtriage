@@ -70,7 +70,7 @@ class PostgresMessageRepositoryIntegrationTest {
             )
 
         val first = repository.save(message)
-        val duplicate = repository.save(message)
+        val duplicate = repository.save(message.copy(id = DlqMessageId(UUID.randomUUID())))
         val count =
             jdbcTemplate.queryForObject(
                 """SELECT COUNT(*) FROM dlq_message WHERE source_topic = ? AND partition = ? AND "offset" = ?""",
@@ -82,6 +82,7 @@ class PostgresMessageRepositoryIntegrationTest {
 
         assertThat(first).isInstanceOf(SaveMessageResult.Saved::class.java)
         assertThat(duplicate).isInstanceOf(SaveMessageResult.Duplicate::class.java)
+        assertThat((duplicate as SaveMessageResult.Duplicate).message.id).isEqualTo(message.id)
         assertThat(count).isEqualTo(1)
     }
 

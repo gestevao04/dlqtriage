@@ -25,6 +25,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation(libs.spring.kafka)
     implementation(libs.spring.boot.starter.jdbc)
+    implementation(libs.jackson.module.kotlin)
     implementation(libs.postgresql)
     implementation(libs.flyway.core)
     implementation(libs.flyway.postgresql)
@@ -59,10 +60,27 @@ sourceSets {
         compileClasspath += sourceSets["main"].output + sourceSets["test"].output
         runtimeClasspath += output + compileClasspath
     }
+    create("evals") {
+        kotlin.srcDir("src/evals/kotlin")
+        compileClasspath += sourceSets["main"].output
+        runtimeClasspath += output + compileClasspath
+    }
+    create("sandbox") {
+        kotlin.srcDir("src/sandbox/kotlin")
+        compileClasspath += sourceSets["main"].output
+        runtimeClasspath += output + compileClasspath
+    }
 }
+
+sourceSets["test"].compileClasspath += sourceSets["evals"].output
+sourceSets["test"].runtimeClasspath += sourceSets["evals"].output
 
 configurations["integrationTestImplementation"].extendsFrom(configurations["testImplementation"])
 configurations["integrationTestRuntimeOnly"].extendsFrom(configurations["testRuntimeOnly"])
+configurations["evalsImplementation"].extendsFrom(configurations["implementation"])
+configurations["evalsRuntimeOnly"].extendsFrom(configurations["runtimeOnly"])
+configurations["sandboxImplementation"].extendsFrom(configurations["implementation"])
+configurations["sandboxRuntimeOnly"].extendsFrom(configurations["runtimeOnly"])
 
 tasks.register<Test>("integrationTest") {
     description = "Runs PostgreSQL and Kafka Testcontainers integration tests."
@@ -73,6 +91,23 @@ tasks.register<Test>("integrationTest") {
     shouldRunAfter(tasks.test)
 }
 
+tasks.register<JavaExec>("evalRun") {
+    description = "Runs the deterministic classifier evaluation against the checked-in dataset."
+    group = "verification"
+    dependsOn(tasks.named("evalsClasses"))
+    classpath = sourceSets["evals"].runtimeClasspath
+    mainClass.set("dev.dlqtriage.evals.EvaluationHarnessKt")
+    args("evals/dataset/baseline.jsonl", "evals/reports/baseline.json")
+}
+
+tasks.register<JavaExec>("sandboxRun") {
+    description = "Publishes synthetic failures to the configured DLQ topic."
+    group = "application"
+    dependsOn(tasks.named("sandboxClasses"))
+    classpath = sourceSets["sandbox"].runtimeClasspath
+    mainClass.set("dev.dlqtriage.sandbox.SyntheticFailureGeneratorKt")
+}
+
 tasks.register<JavaExec>("detekt") {
     description = "Runs detekt static analysis."
     group = "verification"
@@ -80,6 +115,6 @@ tasks.register<JavaExec>("detekt") {
     mainClass.set("io.gitlab.arturbosch.detekt.cli.Main")
     args(
         "--input",
-        "src/main/kotlin,src/test/kotlin,src/integrationTest/kotlin",
+        "src/main/kotlin,src/test/kotlin,src/integrationTest/kotlin,src/evals/kotlin,src/sandbox/kotlin",
     )
 }

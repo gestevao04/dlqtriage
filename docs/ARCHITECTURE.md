@@ -3,7 +3,8 @@
 ## Main flow
 Kafka (DLQ topic) -> KafkaDlqListener (adapter/in)
 -> IngestDlqMessageUseCase (dedup by topic/partition/offset, persist)
--> ClassifyFailureUseCase (baseline) -> InvestigateFailureUseCase (agent)
+-> ClassifyDlqMessageUseCase (deterministic baseline, persist classification)
+-> InvestigateFailureUseCase (agent)
 -> GuardrailPolicy (domain) -> DecideActionUseCase
 ├─ NEEDS_APPROVAL: approval queue -> human approves (REST or MCP)
 │     -> ExecuteActionUseCase -> ReprocessPort (republish)
@@ -22,20 +23,21 @@ Nothing else may republish a message.
 - AUTO: low-risk, high-confidence actions run without approval, still
   bounded by the guardrails.
 
-## Ports (application/port/out)
-DlqSource, MessageRepository, DiagnosisRepository, AgentRunRepository,
-LlmPort, InvestigationToolPort (read-only), ReprocessPort.
+## Ports (application/port)
+Input: IngestDlqMessageUseCase, ClassifyDlqMessageUseCase, Classifier.
+Output: MessageRepository, ClassificationRepository, DiagnosisRepository,
+AgentRunRepository, LlmPort, InvestigationToolPort (read-only), ReprocessPort.
 
 ## Data model (high level; detail in specs)
 dlq_message, classification, agent_run, agent_step, decision, approval,
 diagnosis_cache (PostgreSQL; no Redis in the MVP).
 
-## Failure taxonomy (ASSUMPTION, refined in spec 002)
-SCHEMA_INVALID, DESERIALIZATION_ERROR, TRANSIENT_DEPENDENCY, DUPLICATE,
-DATA_CORRUPTION, SUSPECTED_BUG, UNKNOWN.
+## Baseline failure taxonomy (spec 002)
+TRANSIENT_INFRASTRUCTURE, SCHEMA_MISMATCH, VALIDATION_ERROR,
+PERMANENT_BUSINESS_ERROR, UNKNOWN.
 
-## Actions
-REPROCESS, DISCARD_WITH_REASON, ESCALATE.
+Expected actions: REPROCESS for transient infrastructure failures;
+ESCALATE for all other classes. Discard is not part of the baseline.
 
 ## Open decisions
 Recorded as ADRs in docs/adr/ when made.

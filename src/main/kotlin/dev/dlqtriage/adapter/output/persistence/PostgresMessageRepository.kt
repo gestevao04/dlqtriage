@@ -3,11 +3,13 @@ package dev.dlqtriage.adapter.output.persistence
 import dev.dlqtriage.application.port.output.MessageRepository
 import dev.dlqtriage.application.port.output.SaveMessageResult
 import dev.dlqtriage.domain.ingestion.DlqMessage
+import dev.dlqtriage.domain.ingestion.DlqMessageId
 import org.postgresql.util.PGobject
 import org.springframework.dao.DataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
 import java.sql.Timestamp
+import java.util.UUID
 
 @Repository
 class PostgresMessageRepository(
@@ -49,11 +51,11 @@ class PostgresMessageRepository(
                         message.status.name,
                     )
 
-                return if (inserted == 1) {
-                    SaveMessageResult.Saved(message)
-                } else {
-                    SaveMessageResult.Duplicate(message)
+                if (inserted == 1) {
+                    return SaveMessageResult.Saved(message)
                 }
+
+                return SaveMessageResult.Duplicate(message.copy(id = persistedMessageId(message)))
             } catch (exception: DataAccessException) {
                 lastException = exception
                 if (attempt < MAX_ATTEMPTS - 1) {
@@ -62,6 +64,18 @@ class PostgresMessageRepository(
             }
         }
         throw PersistenceException("Unable to persist DLQ message after $MAX_ATTEMPTS attempts", lastException)
+    }
+
+    private fun persistedMessageId(message: DlqMessage): DlqMessageId {
+        val persistedId =
+            jdbcTemplate.queryForObject(
+                """SELECT id FROM dlq_message WHERE source_topic = ? AND partition = ? AND "offset" = ?""",
+                UUID::class.java,
+                message.sourceTopic,
+                message.partition,
+                message.offset,
+            ) ?: throw PersistenceException("Unable to resolve persisted DLQ message after duplicate insert", null)
+        return DlqMessageId(persistedId)
     }
 
     private fun headersJson(headers: Map<String, String>): String =

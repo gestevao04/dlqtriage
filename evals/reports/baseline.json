@@ -1,0 +1,484 @@
+{
+  "classifierVersion" : "baseline-v1",
+  "datasetCases" : 111,
+  "reviewedCases" : 28,
+  "reviewedRatio" : 0.25225225225225223,
+  "generators" : [ "gemma3:4b", "github-copilot", "human", "llama3.1:8b" ],
+  "datasetRequirementsMet" : true,
+  "overall" : {
+    "cases" : 111,
+    "accuracy" : 0.5765765765765766,
+    "perClassAccuracy" : {
+      "TRANSIENT_INFRASTRUCTURE" : 0.2727272727272727,
+      "SCHEMA_MISMATCH" : 1.0,
+      "VALIDATION_ERROR" : 0.7727272727272727,
+      "PERMANENT_BUSINESS_ERROR" : 0.09090909090909091,
+      "UNKNOWN" : 0.7272727272727273
+    },
+    "confusionMatrix" : {
+      "TRANSIENT_INFRASTRUCTURE" : {
+        "TRANSIENT_INFRASTRUCTURE" : 6,
+        "SCHEMA_MISMATCH" : 1,
+        "VALIDATION_ERROR" : 0,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 15
+      },
+      "SCHEMA_MISMATCH" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0,
+        "SCHEMA_MISMATCH" : 23,
+        "VALIDATION_ERROR" : 0,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 0
+      },
+      "VALIDATION_ERROR" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0,
+        "SCHEMA_MISMATCH" : 0,
+        "VALIDATION_ERROR" : 17,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 5
+      },
+      "PERMANENT_BUSINESS_ERROR" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0,
+        "SCHEMA_MISMATCH" : 0,
+        "VALIDATION_ERROR" : 0,
+        "PERMANENT_BUSINESS_ERROR" : 2,
+        "UNKNOWN" : 20
+      },
+      "UNKNOWN" : {
+        "TRANSIENT_INFRASTRUCTURE" : 4,
+        "SCHEMA_MISMATCH" : 1,
+        "VALIDATION_ERROR" : 1,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 16
+      }
+    }
+  },
+  "perSplit" : {
+    "held-out" : {
+      "cases" : 25,
+      "accuracy" : 0.52,
+      "perClassAccuracy" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0.0,
+        "SCHEMA_MISMATCH" : 1.0,
+        "VALIDATION_ERROR" : 0.8,
+        "PERMANENT_BUSINESS_ERROR" : 0.0,
+        "UNKNOWN" : 0.8
+      },
+      "confusionMatrix" : {
+        "TRANSIENT_INFRASTRUCTURE" : {
+          "TRANSIENT_INFRASTRUCTURE" : 0,
+          "SCHEMA_MISMATCH" : 0,
+          "VALIDATION_ERROR" : 0,
+          "PERMANENT_BUSINESS_ERROR" : 0,
+          "UNKNOWN" : 5
+        },
+        "SCHEMA_MISMATCH" : {
+          "TRANSIENT_INFRASTRUCTURE" : 0,
+          "SCHEMA_MISMATCH" : 5,
+          "VALIDATION_ERROR" : 0,
+          "PERMANENT_BUSINESS_ERROR" : 0,
+          "UNKNOWN" : 0
+        },
+        "VALIDATION_ERROR" : {
+          "TRANSIENT_INFRASTRUCTURE" : 0,
+          "SCHEMA_MISMATCH" : 0,
+          "VALIDATION_ERROR" : 4,
+          "PERMANENT_BUSINESS_ERROR" : 0,
+          "UNKNOWN" : 1
+        },
+        "PERMANENT_BUSINESS_ERROR" : {
+          "TRANSIENT_INFRASTRUCTURE" : 0,
+          "SCHEMA_MISMATCH" : 0,
+          "VALIDATION_ERROR" : 0,
+          "PERMANENT_BUSINESS_ERROR" : 0,
+          "UNKNOWN" : 5
+        },
+        "UNKNOWN" : {
+          "TRANSIENT_INFRASTRUCTURE" : 1,
+          "SCHEMA_MISMATCH" : 0,
+          "VALIDATION_ERROR" : 0,
+          "PERMANENT_BUSINESS_ERROR" : 0,
+          "UNKNOWN" : 4
+        }
+      }
+    },
+    "train" : {
+      "cases" : 86,
+      "accuracy" : 0.5930232558139535,
+      "perClassAccuracy" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0.35294117647058826,
+        "SCHEMA_MISMATCH" : 1.0,
+        "VALIDATION_ERROR" : 0.7647058823529411,
+        "PERMANENT_BUSINESS_ERROR" : 0.11764705882352941,
+        "UNKNOWN" : 0.7058823529411765
+      },
+      "confusionMatrix" : {
+        "TRANSIENT_INFRASTRUCTURE" : {
+          "TRANSIENT_INFRASTRUCTURE" : 6,
+          "SCHEMA_MISMATCH" : 1,
+          "VALIDATION_ERROR" : 0,
+          "PERMANENT_BUSINESS_ERROR" : 0,
+          "UNKNOWN" : 10
+        },
+        "SCHEMA_MISMATCH" : {
+          "TRANSIENT_INFRASTRUCTURE" : 0,
+          "SCHEMA_MISMATCH" : 18,
+          "VALIDATION_ERROR" : 0,
+          "PERMANENT_BUSINESS_ERROR" : 0,
+          "UNKNOWN" : 0
+        },
+        "VALIDATION_ERROR" : {
+          "TRANSIENT_INFRASTRUCTURE" : 0,
+          "SCHEMA_MISMATCH" : 0,
+          "VALIDATION_ERROR" : 13,
+          "PERMANENT_BUSINESS_ERROR" : 0,
+          "UNKNOWN" : 4
+        },
+        "PERMANENT_BUSINESS_ERROR" : {
+          "TRANSIENT_INFRASTRUCTURE" : 0,
+          "SCHEMA_MISMATCH" : 0,
+          "VALIDATION_ERROR" : 0,
+          "PERMANENT_BUSINESS_ERROR" : 2,
+          "UNKNOWN" : 15
+        },
+        "UNKNOWN" : {
+          "TRANSIENT_INFRASTRUCTURE" : 3,
+          "SCHEMA_MISMATCH" : 1,
+          "VALIDATION_ERROR" : 1,
+          "PERMANENT_BUSINESS_ERROR" : 0,
+          "UNKNOWN" : 12
+        }
+      }
+    }
+  },
+  "misclassifications" : [ {
+    "caseId" : "case-002",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "com.example.DLQException",
+    "errorMessage" : "Database connection lost due to server restart.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-003",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "com.example.DLQException",
+    "errorMessage" : "Failed to send email due to SMTP server issues.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-004",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "SCHEMA_MISMATCH",
+    "errorClass" : "com.example.DLQException",
+    "errorMessage" : "Failed to deserialize payload due to invalid JSON.",
+    "evidence" : [ "errorMessage: Failed to deserialize" ]
+  }, {
+    "caseId" : "case-005",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "com.example.DLQException",
+    "errorMessage" : "Failed to connect to external API due to DNS resolution issues.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-006",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "com.example.DLQException",
+    "errorMessage" : "Failed to write file due to disk full error.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-007",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "com.example.DLQException",
+    "errorMessage" : "Failed to execute shell command due to permission issues.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-008",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "com.example.DLQException",
+    "errorMessage" : "Failed to connect to Redis cache due to connection timeout.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-009",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "com.example.DLQException",
+    "errorMessage" : "Failed to start container due to Docker image issues.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-010",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "com.example.DLQException",
+    "errorMessage" : "Failed to send message due to network partition.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-023",
+    "expectedClass" : "VALIDATION_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "InvalidDataException",
+    "errorMessage" : "Invalid credit card number",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-027",
+    "expectedClass" : "VALIDATION_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "MissingHeaderException",
+    "errorMessage" : "Required header 'Authorization' is missing",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-028",
+    "expectedClass" : "VALIDATION_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "InvalidParameterException",
+    "errorMessage" : "Invalid parameter 'limit'",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-029",
+    "expectedClass" : "VALIDATION_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "UnsupportedOperationException",
+    "errorMessage" : "Unsupported operation 'delete'",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-030",
+    "expectedClass" : "VALIDATION_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "InternalServerException",
+    "errorMessage" : "Internal server error occurred while processing request",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-031",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Failed to process payment due to invalid account status.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-033",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Invalid credit card number provided by customer.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-034",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Transaction exceeds maximum allowed amount for account type.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-035",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Customer's account has been flagged for suspicious activity.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-036",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Failed to authenticate customer due to invalid credentials.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-038",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Customer's account has been locked out due to excessive login attempts.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-039",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Failed to process payment due to invalid merchant ID.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-040",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Transaction has been declined by bank due to invalid card details.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-042",
+    "expectedClass" : "UNKNOWN",
+    "predictedClass" : "SCHEMA_MISMATCH",
+    "errorClass" : "org.apache.kafka.common.errors.SerializationException",
+    "errorMessage" : "Failed to deserialize message due to missing required field.",
+    "evidence" : [ "errorClass: SerializationException", "errorMessage: Failed to deserialize" ]
+  }, {
+    "caseId" : "case-043",
+    "expectedClass" : "UNKNOWN",
+    "predictedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "errorClass" : "com.example.ConnectionException",
+    "errorMessage" : "Failed to establish connection due to network error.",
+    "evidence" : [ "errorClass: ConnectionException", "stackTrace: SocketTimeoutException" ]
+  }, {
+    "caseId" : "case-044",
+    "expectedClass" : "UNKNOWN",
+    "predictedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "errorClass" : "org.apache.kafka.common.errors.TimeoutException",
+    "errorMessage" : "Failed to process message within allotted time.",
+    "evidence" : [ "errorClass: TimeoutException" ]
+  }, {
+    "caseId" : "case-053",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "TRANSIENT_INFRASTRUCTURE",
+    "errorMessage" : "Instance (compute-node-7) experiencing intermittent CPU throttling.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-054",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "TRANSIENT_INFRASTRUCTURE",
+    "errorMessage" : "Storage volume (volume-vg-data01) reporting degraded status.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-055",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "TRANSIENT_INFRASTRUCTURE",
+    "errorMessage" : "DNS resolution failure for external service 'api.example.com'.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-056",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "TRANSIENT_INFRASTRUCTURE",
+    "errorMessage" : "Load balancer (lb-prod-01) experiencing high request latency.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-058",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "TRANSIENT_INFRASTRUCTURE",
+    "errorMessage" : "Database connection pool (pool-prod-01) exhausted.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-060",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "TRANSIENT_INFRASTRUCTURE",
+    "errorMessage" : "Kubernetes Pod 'data-processor-789' in region 'us-east-1' experienced a fatal error (SIGTERM) and is being automatically restarted.  Data processing pipeline impacted.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-081",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Critical database connection failure - unable to process order data.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-082",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Payment gateway integration error - transaction failed for customer 12345.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-083",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Inventory system unavailable - preventing fulfillment of orders.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-084",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Shipping API outage - unable to generate shipping labels.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-085",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Core system downtime - impacting all business operations.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-086",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Critical database connection failure - unable to process order data.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-087",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Payment gateway integration error - transaction failed for customer 12345.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-088",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Inventory system unavailable - preventing fulfillment of orders.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-089",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "External API outage - impacting customer profile updates.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-090",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Core system service failure - impacting all business operations.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-093",
+    "expectedClass" : "UNKNOWN",
+    "predictedClass" : "VALIDATION_ERROR",
+    "errorClass" : "DataValidationError",
+    "errorMessage" : "Input data format mismatch - expected integer, received string.",
+    "evidence" : [ "errorClass: ValidationError" ]
+  }, {
+    "caseId" : "case-094",
+    "expectedClass" : "UNKNOWN",
+    "predictedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "errorClass" : "DependencyFailure",
+    "errorMessage" : "Required external service unavailable - connection timeout.",
+    "evidence" : [ "stackTrace: ConnectException" ]
+  }, {
+    "caseId" : "case-100",
+    "expectedClass" : "UNKNOWN",
+    "predictedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "errorClass" : "DependencyFailure",
+    "errorMessage" : "Required external service unavailable – connection timeout.",
+    "evidence" : [ "stackTrace: ConnectException" ]
+  }, {
+    "caseId" : "case-103",
+    "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "TRANSIENT_INFRASTRUCTURE",
+    "errorMessage" : "Failed to upload object to S3 due to request throttling.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-108",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Cannot process refund because original transaction is older than allowed refund window.",
+    "evidence" : [ ]
+  }, {
+    "caseId" : "case-109",
+    "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+    "predictedClass" : "UNKNOWN",
+    "errorClass" : "PERMANENT_BUSINESS_ERROR",
+    "errorMessage" : "Order cannot be fulfilled because product is discontinued.",
+    "evidence" : [ ]
+  } ]
+}

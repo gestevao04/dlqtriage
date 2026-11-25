@@ -1,5 +1,5 @@
 # Spec 002 — Baseline classification and eval harness
-Status: Draft | Depends on: 001
+Status: Approved | Depends on: 001
 
 ## Context
 Before any agent exists we need a deterministic baseline and a way to

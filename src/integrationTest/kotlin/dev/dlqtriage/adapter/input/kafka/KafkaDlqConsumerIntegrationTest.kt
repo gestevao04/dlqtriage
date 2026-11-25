@@ -1,5 +1,7 @@
 package dev.dlqtriage.adapter.input.kafka
 
+import dev.dlqtriage.application.classification.RuleBasedClassifier
+import dev.dlqtriage.domain.classification.FailureClass
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.clients.producer.KafkaProducer
@@ -57,9 +59,12 @@ class KafkaDlqConsumerIntegrationTest {
             consumer.commitSync()
 
             val mapped = KafkaDlqRecordMapper().map(record)
+            val classification = RuleBasedClassifier().classify(mapped)
             assertThat(mapped.sourceTopic).isEqualTo("dlq.orders")
             assertThat(mapped.payload).isEqualTo("""{"orderId":"123"}""")
             assertThat(mapped.partition).isGreaterThanOrEqualTo(0)
+            assertThat(classification.failureClass).isEqualTo(FailureClass.UNKNOWN)
+            assertThat(classification.evidence).isEmpty()
         }
     }
 }

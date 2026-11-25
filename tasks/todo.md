@@ -20,16 +20,16 @@ Convention: `[ ] Spec NNN — description`. Detail lives in the spec.
 - [x] Spec 001 — run lint and `build integrationTest`
 
 ## Spec 002 — Baseline classification and evals
-- [ ] Spec 002 — taxonomy and expected actions in the domain
-- [ ] Spec 002 — `RuleBasedClassifier` + `classification` persistence
-- [ ] Spec 002 — sandbox failure generator
-- [ ] Spec 002 — dataset generation scripts (multiple LLMs) and provenance fields
-- [ ] Spec 002 — dataset >= 100 cases, human review of >= 20%, held-out split
-- [ ] Spec 002 — eval harness and report
-- [ ] Spec 002 — write tests
-- [ ] Spec 002 — publish baseline report
-- [ ] Spec 002 — review acceptance criteria
-- [ ] Spec 002 — run lint and tests
+- [x] Spec 002 — taxonomy and expected actions in the domain
+- [x] Spec 002 — `RuleBasedClassifier` + `classification` persistence
+- [x] Spec 002 — sandbox failure generator
+- [x] Spec 002 — dataset generation scripts (multiple LLMs) and provenance fields
+- [x] Spec 002 — dataset >= 100 cases, human review of >= 20%, held-out split
+- [x] Spec 002 — eval harness and report
+- [x] Spec 002 — write tests
+- [x] Spec 002 — publish baseline report
+- [x] Spec 002 — review acceptance criteria
+- [x] Spec 002 — run lint and tests
 
 ## Spec 003 — Investigator agent
 - [ ] Spec 003 — choose local model and validate tool calling (ADR)
