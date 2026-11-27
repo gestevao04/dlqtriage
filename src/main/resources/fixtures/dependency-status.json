@@ -1,0 +1,5 @@
+{
+  "postgres": { "status": "UP", "detail": "Sandbox fixture: database responds to health checks." },
+  "kafka": { "status": "UP", "detail": "Sandbox fixture: broker is reachable." },
+  "inventory": { "status": "DEGRADED", "detail": "Sandbox fixture: dependency reports intermittent timeouts." }
+}

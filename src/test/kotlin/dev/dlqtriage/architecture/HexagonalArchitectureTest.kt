@@ -20,4 +20,26 @@ class HexagonalArchitectureTest {
                 "java.sql..",
                 "jakarta.persistence..",
             )
+
+    @ArchTest
+    val applicationMustNotDependOnAdapters: ArchRule =
+        noClasses()
+            .that()
+            .haveFullyQualifiedName("dev.dlqtriage.application.agent.InvestigateDlqMessageService")
+            .should()
+            .dependOnClassesThat()
+            .resideInAPackage("dev.dlqtriage.adapter..")
+
+    @ArchTest
+    val agentToolsMustNotDependOnWritePorts: ArchRule =
+        noClasses()
+            .that()
+            .resideInAPackage("dev.dlqtriage.adapter.agent.tool..")
+            .should()
+            .dependOnClassesThat()
+            .resideInAnyPackage(
+                "dev.dlqtriage.application.port.output.MessageRepository",
+                "dev.dlqtriage.application.port.output.ClassificationRepository",
+                "dev.dlqtriage.application.port.output.AgentRunRepository",
+            )
 }

@@ -30,6 +30,7 @@ dependencies {
     implementation(libs.flyway.core)
     implementation(libs.flyway.postgresql)
     implementation(libs.kotlin.reflect)
+    implementation(libs.spring.ai.ollama.starter)
 
     testImplementation(libs.spring.boot.starter.test)
     testImplementation(libs.mockk)
@@ -92,12 +93,14 @@ tasks.register<Test>("integrationTest") {
 }
 
 tasks.register<JavaExec>("evalRun") {
-    description = "Runs the deterministic classifier evaluation against the checked-in dataset."
+    description = "Runs the deterministic baseline and investigator evaluation."
     group = "verification"
     dependsOn(tasks.named("evalsClasses"))
     classpath = sourceSets["evals"].runtimeClasspath
     mainClass.set("dev.dlqtriage.evals.EvaluationHarnessKt")
-    args("evals/dataset/baseline.jsonl", "evals/reports/baseline.json")
+    val evalLlm = providers.gradleProperty("eval.llm").orElse("fake")
+    val reportName = if (evalLlm.get() == "local") "investigator-local.json" else "investigator.json"
+    args("evals/dataset/baseline.jsonl", "evals/reports/$reportName", evalLlm.get())
 }
 
 tasks.register<JavaExec>("sandboxRun") {

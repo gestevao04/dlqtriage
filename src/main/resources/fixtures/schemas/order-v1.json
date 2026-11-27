@@ -1,0 +1,21 @@
+{
+  "schemaName": "order-v1",
+  "schemaVersion": "1",
+  "type": "object",
+  "required": ["orderId", "customerId", "items"],
+  "properties": {
+    "orderId": { "type": "string" },
+    "customerId": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sku", "quantity"],
+        "properties": {
+          "sku": { "type": "string" },
+          "quantity": { "type": "integer", "minimum": 1 }
+        }
+      }
+    }
+  }
+}

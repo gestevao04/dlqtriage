@@ -1,0 +1,88 @@
+{
+  "baseline" : {
+    "cases" : 10,
+    "accuracy" : 0.7,
+    "perClassAccuracy" : {
+      "TRANSIENT_INFRASTRUCTURE" : 0.5,
+      "SCHEMA_MISMATCH" : 1.0,
+      "VALIDATION_ERROR" : 1.0,
+      "PERMANENT_BUSINESS_ERROR" : 0.5,
+      "UNKNOWN" : 0.5
+    },
+    "confusionMatrix" : {
+      "TRANSIENT_INFRASTRUCTURE" : {
+        "TRANSIENT_INFRASTRUCTURE" : 1,
+        "SCHEMA_MISMATCH" : 0,
+        "VALIDATION_ERROR" : 0,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 1
+      },
+      "SCHEMA_MISMATCH" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0,
+        "SCHEMA_MISMATCH" : 2,
+        "VALIDATION_ERROR" : 0,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 0
+      },
+      "VALIDATION_ERROR" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0,
+        "SCHEMA_MISMATCH" : 0,
+        "VALIDATION_ERROR" : 2,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 0
+      },
+      "PERMANENT_BUSINESS_ERROR" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0,
+        "SCHEMA_MISMATCH" : 0,
+        "VALIDATION_ERROR" : 0,
+        "PERMANENT_BUSINESS_ERROR" : 1,
+        "UNKNOWN" : 1
+      },
+      "UNKNOWN" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0,
+        "SCHEMA_MISMATCH" : 1,
+        "VALIDATION_ERROR" : 0,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 1
+      }
+    }
+  },
+  "investigator" : {
+    "cases" : 10,
+    "accuracy" : 0.4,
+    "averageSteps" : 1.0,
+    "averageLatencyMillis" : 45343.5,
+    "perClassAccuracy" : {
+      "TRANSIENT_INFRASTRUCTURE" : 1.0,
+      "SCHEMA_MISMATCH" : 0.0,
+      "VALIDATION_ERROR" : 0.0,
+      "PERMANENT_BUSINESS_ERROR" : 0.0,
+      "UNKNOWN" : 1.0
+    },
+    "misclassifications" : [ {
+      "caseId" : "case-011",
+      "expectedClass" : "SCHEMA_MISMATCH",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-012",
+      "expectedClass" : "SCHEMA_MISMATCH",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-021",
+      "expectedClass" : "VALIDATION_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-022",
+      "expectedClass" : "VALIDATION_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-031",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-032",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    } ]
+  }
+}

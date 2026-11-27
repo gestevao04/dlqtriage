@@ -1,11 +1,18 @@
 package dev.dlqtriage.evals
 
 import dev.dlqtriage.application.classification.RuleBasedClassifier
+import dev.dlqtriage.domain.agent.AgentDecision
+import dev.dlqtriage.domain.agent.AgentInvestigation
+import dev.dlqtriage.domain.agent.AgentRun
+import dev.dlqtriage.domain.agent.AgentRunStatus
+import dev.dlqtriage.domain.agent.AgentStep
 import dev.dlqtriage.domain.classification.ExpectedAction
 import dev.dlqtriage.domain.classification.FailureClass
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
+import java.time.Instant
+import java.util.UUID
 
 class EvaluationHarnessTest {
     @Test
@@ -80,6 +87,63 @@ class EvaluationHarnessTest {
         assertThat(report.misclassifications.single().caseId).isEqualTo("incorrect-schema")
         assertThat(report.misclassifications.single().expectedClass).isEqualTo(FailureClass.SCHEMA_MISMATCH)
         assertThat(report.misclassifications.single().predictedClass).isEqualTo(FailureClass.UNKNOWN)
+    }
+
+    @Test
+    fun producesBaselineComparisonWithInvestigatorAccuracyStepsAndLatency() {
+        val cases =
+            listOf(
+                case("timeout", FailureClass.TRANSIENT_INFRASTRUCTURE, "SocketTimeoutException"),
+                case("validation", FailureClass.VALIDATION_ERROR, "ConstraintViolationException"),
+            )
+
+        val report =
+            buildComparisonReport(cases, RuleBasedClassifier()) { message ->
+                val case = cases.first { it.errorClass == message.errorClass }
+                val started = Instant.EPOCH
+                val decision =
+                    AgentDecision(
+                        classification = case.expectedClass,
+                        confidence = 0.8,
+                        evidence = listOf("Synthetic fixture"),
+                        suggestedAction = case.correctAction,
+                        reasoningSummary = "Fixture diagnosis.",
+                    )
+                val runId = UUID.randomUUID()
+                AgentInvestigation(
+                    run =
+                        AgentRun(
+                            id = runId,
+                            messageId = message.id,
+                            promptVersion = "investigator-v1",
+                            decision = decision,
+                            status = AgentRunStatus.COMPLETED,
+                            startedAt = started,
+                            completedAt = started,
+                            inputTokens = 0,
+                            outputTokens = 0,
+                        ),
+                    steps =
+                        listOf(
+                            AgentStep(
+                                runId = runId,
+                                sequence = 1,
+                                summarizedInput = "Synthetic message.",
+                                toolCalled = null,
+                                summarizedResult = "Decision produced.",
+                                inputTokens = 0,
+                                outputTokens = 0,
+                                durationMillis = 0,
+                            ),
+                        ),
+                )
+            }
+
+        assertThat(report.baseline.cases).isEqualTo(2)
+        assertThat(report.investigator.cases).isEqualTo(2)
+        assertThat(report.investigator.accuracy).isEqualTo(1.0)
+        assertThat(report.investigator.averageSteps).isEqualTo(1.0)
+        assertThat(report.investigator.averageLatencyMillis).isEqualTo(0.0)
     }
 
     private fun case(

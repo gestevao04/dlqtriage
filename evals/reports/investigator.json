@@ -1,0 +1,252 @@
+{
+  "baseline" : {
+    "cases" : 111,
+    "accuracy" : 0.5765765765765766,
+    "perClassAccuracy" : {
+      "TRANSIENT_INFRASTRUCTURE" : 0.2727272727272727,
+      "SCHEMA_MISMATCH" : 1.0,
+      "VALIDATION_ERROR" : 0.7727272727272727,
+      "PERMANENT_BUSINESS_ERROR" : 0.09090909090909091,
+      "UNKNOWN" : 0.7272727272727273
+    },
+    "confusionMatrix" : {
+      "TRANSIENT_INFRASTRUCTURE" : {
+        "TRANSIENT_INFRASTRUCTURE" : 6,
+        "SCHEMA_MISMATCH" : 1,
+        "VALIDATION_ERROR" : 0,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 15
+      },
+      "SCHEMA_MISMATCH" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0,
+        "SCHEMA_MISMATCH" : 23,
+        "VALIDATION_ERROR" : 0,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 0
+      },
+      "VALIDATION_ERROR" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0,
+        "SCHEMA_MISMATCH" : 0,
+        "VALIDATION_ERROR" : 17,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 5
+      },
+      "PERMANENT_BUSINESS_ERROR" : {
+        "TRANSIENT_INFRASTRUCTURE" : 0,
+        "SCHEMA_MISMATCH" : 0,
+        "VALIDATION_ERROR" : 0,
+        "PERMANENT_BUSINESS_ERROR" : 2,
+        "UNKNOWN" : 20
+      },
+      "UNKNOWN" : {
+        "TRANSIENT_INFRASTRUCTURE" : 4,
+        "SCHEMA_MISMATCH" : 1,
+        "VALIDATION_ERROR" : 1,
+        "PERMANENT_BUSINESS_ERROR" : 0,
+        "UNKNOWN" : 16
+      }
+    }
+  },
+  "investigator" : {
+    "cases" : 111,
+    "accuracy" : 0.5765765765765766,
+    "averageSteps" : 1.0,
+    "averageLatencyMillis" : 0.0,
+    "perClassAccuracy" : {
+      "TRANSIENT_INFRASTRUCTURE" : 0.2727272727272727,
+      "SCHEMA_MISMATCH" : 1.0,
+      "VALIDATION_ERROR" : 0.7727272727272727,
+      "PERMANENT_BUSINESS_ERROR" : 0.09090909090909091,
+      "UNKNOWN" : 0.7272727272727273
+    },
+    "misclassifications" : [ {
+      "caseId" : "case-002",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-003",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-004",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "SCHEMA_MISMATCH"
+    }, {
+      "caseId" : "case-005",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-006",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-007",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-008",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-009",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-010",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-023",
+      "expectedClass" : "VALIDATION_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-027",
+      "expectedClass" : "VALIDATION_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-028",
+      "expectedClass" : "VALIDATION_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-029",
+      "expectedClass" : "VALIDATION_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-030",
+      "expectedClass" : "VALIDATION_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-031",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-033",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-034",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-035",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-036",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-038",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-039",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-040",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-042",
+      "expectedClass" : "UNKNOWN",
+      "predictedClass" : "SCHEMA_MISMATCH"
+    }, {
+      "caseId" : "case-043",
+      "expectedClass" : "UNKNOWN",
+      "predictedClass" : "TRANSIENT_INFRASTRUCTURE"
+    }, {
+      "caseId" : "case-044",
+      "expectedClass" : "UNKNOWN",
+      "predictedClass" : "TRANSIENT_INFRASTRUCTURE"
+    }, {
+      "caseId" : "case-053",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-054",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-055",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-056",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-058",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-060",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-081",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-082",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-083",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-084",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-085",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-086",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-087",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-088",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-089",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-090",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-093",
+      "expectedClass" : "UNKNOWN",
+      "predictedClass" : "VALIDATION_ERROR"
+    }, {
+      "caseId" : "case-094",
+      "expectedClass" : "UNKNOWN",
+      "predictedClass" : "TRANSIENT_INFRASTRUCTURE"
+    }, {
+      "caseId" : "case-100",
+      "expectedClass" : "UNKNOWN",
+      "predictedClass" : "TRANSIENT_INFRASTRUCTURE"
+    }, {
+      "caseId" : "case-103",
+      "expectedClass" : "TRANSIENT_INFRASTRUCTURE",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-108",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    }, {
+      "caseId" : "case-109",
+      "expectedClass" : "PERMANENT_BUSINESS_ERROR",
+      "predictedClass" : "UNKNOWN"
+    } ]
+  }
+}

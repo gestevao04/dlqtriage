@@ -1,5 +1,5 @@
 # Spec 003 — Investigator agent (LLM + read-only tools)
-Status: Draft | Depends on: 001, 002
+Status: Approved | Depends on: 001, 002
 
 ## Context
 The agent receives a DLQ message, uses read-only tools to investigate, and

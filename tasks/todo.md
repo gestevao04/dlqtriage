@@ -32,20 +32,20 @@ Convention: `[ ] Spec NNN — description`. Detail lives in the spec.
 - [x] Spec 002 — run lint and tests
 
 ## Spec 003 — Investigator agent
-- [ ] Spec 003 — choose local model and validate tool calling (ADR)
-- [ ] Spec 003 — `LlmPort` + adapters (Ollama, fake)
-- [ ] Spec 003 — read-only tools
-- [ ] Spec 003 — structured output validator
-- [ ] Spec 003 — versioned prompt + payload isolation
-- [ ] Spec 003 — `agent_run` / `agent_step` persistence
-- [ ] Spec 003 — plug into harness and compare with baseline
-- [ ] Spec 003 — adversarial cases (prompt injection)
-- [ ] Spec 003 — write tests
-- [ ] Spec 003 — review acceptance criteria
-- [ ] Spec 003 — run lint and tests
+- [x] Spec 003 — choose local model and validate tool calling (ADR)
+- [x] Spec 003 — `LlmPort` + adapters (Ollama, fake)
+- [x] Spec 003 — read-only tools
+- [x] Spec 003 — structured output validator
+- [x] Spec 003 — versioned prompt + payload isolation
+- [x] Spec 003 — `agent_run` / `agent_step` persistence
+- [x] Spec 003 — plug into harness and compare with baseline
+- [x] Spec 003 — adversarial cases (prompt injection)
+- [x] Spec 003 — write tests
+- [x] Spec 003 — review acceptance criteria
+- [x] Spec 003 — run lint and tests
 
 ## Spec 004 — Guardrails and actions
-- [ ] Spec 004 — migration V3 `decision` / `approval`
+- [ ] Spec 004 — migration V4 `decision` / `approval`
 - [ ] Spec 004 — `GuardrailPolicy` + decision table
 - [ ] Spec 004 — configurable step and cost limits
 - [ ] Spec 004 — idempotent `ReprocessPort` + `ExecuteActionUseCase`

@@ -10,6 +10,7 @@ archunit = "1.4.1"
 h2 = "2.4.240"
 ktlintPlugin = "14.0.1"
 detekt = "1.23.8"
+springAi = "2.1.0"
 
 [libraries]
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
@@ -29,6 +30,7 @@ junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher
 archunit-junit5 = { module = "com.tngtech.archunit:archunit-junit5", version.ref = "archunit" }
 h2 = { module = "com.h2database:h2", version.ref = "h2" }
 detekt-cli = { module = "io.gitlab.arturbosch.detekt:detekt-cli", version.ref = "detekt" }
+spring-ai-ollama-starter = { module = "org.springframework.ai:spring-ai-starter-model-ollama", version.ref = "springAi" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
